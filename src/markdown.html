@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>STATS TSTESTS Extension Command</title>
+
+<link rel="stylesheet" type="text/css" href="extsyntax.css" />
+
+</head>
+
+<body>
+<h1>STATS TSTESTS Extension Command</h1>
+
+<p>Carry out cointegration, stationarity, and unit root tests for time series</p>
+<div class="syntax">
+<p>STATS TSTESTS VARIABLE = <em>variable to test</em><sup>&#42;</sup>
+<p>
+/PO COINTVARS = <em>one to five variable names</em><sup>&#42;</sup></br>
+INTERCEPT = YES<sup>&#42;&#42;</sup> or NO</br>
+TRUNCLAG = SHORT<sup>&#42;&#42;</sup> or LONG</p>
+<p>/PP
+ALTHYPOT = STATIONARY<sup>&#42;&#42;</sup> or EXPLOSIVE</br>
+TYPE = ZALPHA<sup>&#42;&#42;</sup> or ZTALPHA</br>
+TRUNCLAG = SHORT<sup>&#42;&#42;</sup> or LONG</p>
+
+<p>/ADF 
+ALTHYPOT = STATIONARY<sup>&#42;&#42;</sup> or EXPLOSIVE</br>
+LAGORDER = <em>number of lags</em></p>
+<p>/KPSS
+NULLHYPOT = LEVEL<sup>&#42;&#42;</sup> or TREND</br>
+TRUNCLAG = SHORT<sup>&#42;&#42;</sup> or LONG</p>
+
+<p>/HELP</p>
+
+<p><sup>&#42;</sup> Required<br/>
+<sup>&#42;&#42;</sup> Default</p>
+</div>
+
+<p>STATS TSTESTS /HELP prints this information and does nothing else.</p>
+
+<pre class="example"><code>
+STATS TSTESTS VARIABLE=y
+/PO COINTVARS=x1 x2
+/PP ALTHYPOT=STATIONARY
+/ADF ALTHYPOT=EXPLOSIVE
+/KPSS NULLHYPOT=LEVEL TRUNCLAG=LONG
+</code></pre>
+<p>At least one test must be specified.  Missing values are
+not allowed.  In some cases, the p value may lie outside
+the tabulated significance levels, in which case the 
+endpoint in the table is produced, and a note is displayed.</p>
+
+<p><strong>VARIABLE</strong> specifies the variable to test</p>
+
+<h2>PO</h2>
+<p>This subcommand produces the Phillips-Ouliaris test of the
+null hypothesis that the variable named in <strong>VARIABLE</strong>
+is not cointegrated.  The variable is regressed on the
+variables named in <strong>COINTVARS</strong>, and then the
+Phillips-Perron Z(alpha) test for a unit root is carried out
+on the residuals.  COINTVARS must list one to five variables if
+this subcommand is used.</p>
+<p><strong>INTERCEPT</strong> specifies whether an intercept is
+included in the regression or not.</p>
+<p><strong>TRUNCLAG</strong> specifies the truncation lag.
+If it is <strong>SHORT</strong> the lag is <code>TRUNC(N/100)</code>, where
+N is the number of observations.  If it is <strong>LONG</strong>, the
+lag is <code>TRUNC(N/30)</code>.</p>
+<h2>PP</h2>
+<p>This subcommand produces the Phillips-Perron test of the
+null hypothesis that <strong>VARIABLE</strong> has a unit root.</p>
+<p><strong>ALTHYPOT</strong> specifies the alternative hypothesis.</p>
+<p><strong>TYPE</strong> specifies whether the test is Z(alpha) or
+Z(t_alpha).  The former is based on the normal distribution
+while the latter is based on the t distribution.</p>
+<p><strong>TRUNCLAG</strong>  For <strong>SHORT</strong>, the truncation lag
+is <code>TRUNC(4*(N/100)**.25</code>.  For <strong>LONG</strong>
+it is <code>TRUNC(12*(N/100)**.25</code>.</p>
+<h2>ADF</h2>
+<p>This subcommand produces the Augmented Dickey-Fuller test of
+the null hypothesis that <strong>VARIABLE</strong> has a unit root.</p>
+<p><strong>ALTHYPOT</strong> specifies the alternative hypothesis</p>
+<p><strong>LAGORDER</strong> specifies the lag order.  The default is
+<code>TRUNC((N-1)**(1/3))</code>.  Using a value of 0 produces
+the standard Dickey-Fuller test.</p>
+<h2>KPSS</h2>
+<p>This subcommand produces the Kwiatkowski-Phillips-Schmidt-Shin test
+of the null hypothesis that <strong>VARIABLE</strong> is level or trend
+stationary.</p>
+<p><strong>NULLHYPOT</strong> specifies which null hypothesis is tested.</p>
+<p><strong>TRUNCLAG</strong> specifies the truncation lag.  For <strong>SHORT</strong>
+this is <code>TRUNC(3*SQRT(N)/13</code>.  For long, it is
+<code>TRUNC(10*SQRT(N)/14)</code>.
+</p>
+
+<h3>Acknowledgements</h3>
+<p>This procedure uses the tseries package by A. Trapletti.</p>
+
+<h3>References from the tseries package</h3>
+<ul>
+<li>A. Banerjee, J. J. Dolado, J. W. Galbraith, and D. F. Hendry (1993): Cointegration, Error Correction, and the Econometric Analysis of Non-Stationary Data, Oxford University Press, Oxford.</li>
+<li>D. Kwiatkowski, P. C. B. Phillips, P. Schmidt, and Y. Shin (1992): Testing the Null Hypothesis of Stationarity against the Alternative of a Unit Root. Journal of Econometrics 54, 159–178.</li>
+<li>P. Perron (1988): Trends and Random Walks in Macroeconomic Time Series. Journal of Economic Dynamics and Control 12, 297–332.</li>
+<li>P. C. B. Phillips and S. Ouliaris (1990): Asymptotic Properties of Residual Based Tests for Cointegration. Econometrica 58, 165–193.</li>
+<li>S. E. Said and D. A. Dickey (1984): Testing for Unit Roots in Autoregressive-Moving Average Models of Unknown Order. Biometrika 71, 599–607.</li>
+</ul>
+<p>&copy; Copyright IBM Corp. 1989, 2015</p>
+
+</body>
+
+</html>
+
