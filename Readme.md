@@ -1,11 +1,11 @@
 # STATS TSTESTS
 ## Perform cointegration and stationarity tests for time series 
- This procedure performs one or more of the Phillips-Oulia
+ This procedure performs one or more of the Phillips-Ouliaris cointegration test, the Phillips-Perron unit root test, the augmented Dickey-Fuller test, and the Kwiatkowski-Phillips_Schmidt-Shinn test.
 
 ---
 Requirements
 ----
-- IBM SPSS Statistics 18 or later
+- IBM SPSS Statistics 18 or later and the corresponding IBM SPSS Statistics-Integration Plug-in for R.
 
 ---
 Installation intructions
