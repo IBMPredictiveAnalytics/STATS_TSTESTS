@@ -3,14 +3,14 @@ Dialog-Specs: STATS_TSTESTS.spd
 Command-Specs: STATS_TSTESTS.xml
 Code-Files: STATS_TSTESTS.R
 Misc-Files: extsyntax.css,markdown.html,IBMdialogicon.png
-Summary: Perform cointegration and stationarity tests for time series 
+Summary: Perform cointegration and stationarity tests for time series
  data
 Description: This procedure performs one or more of the Phillips-Oulia
  ris cointegration test, the Phillips-Perron unit root test, the augme
  nted Dickey-Fuller test, and the Kwiatkowski-Phillips_Schmidt-Shinn t
  est.
 Author: JKP, IBM SPSS
-Version: 1.0.0
+Version: 1.0.1
 Product-Version: 18
 Date: 2/16/2015
 Categories: time series
