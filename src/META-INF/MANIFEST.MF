@@ -10,7 +10,7 @@ Description: This procedure performs one or more of the Phillips-Oulia
  nted Dickey-Fuller test, and the Kwiatkowski-Phillips_Schmidt-Shinn t
  est.
 Author: JKP, IBM SPSS
-Version: 1.0.1
+Version: 1.0.2
 Product-Version: 18
 Date: 2/16/2015
 Categories: time series
