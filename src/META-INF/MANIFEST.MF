@@ -1,4 +1,5 @@
 Name: STATS TSTESTS
+Display-Name: Time Series Tests
 Dialog-Specs: STATS_TSTESTS.spd
 Command-Specs: STATS_TSTESTS.xml
 Code-Files: STATS_TSTESTS.R
